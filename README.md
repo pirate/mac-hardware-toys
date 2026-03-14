@@ -289,6 +289,7 @@ It's fun. Here are some ideas to get started:
 
 ## Related Projects
 
+- https://pirate.github.io/soundview/ (https://github.com/pirate/soundview)
 - https://github.com/olvvier/apple-silicon-accelerometer IOReg accelerometer reading code
 - https://github.com/EthanRDoesMC/KBPulse/ keyboard brightness code for M1, M2, M3, etc. macs
 - https://github.com/maxmouchet/LightKit
