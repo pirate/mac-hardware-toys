@@ -32,7 +32,7 @@ All commands can also pipe in/out a a simple 🎼 ***mono audio*** format.
 ---
 
 > [!TIP]
-> Some *truly wild things* are possible when you can pipe *anything* to *anything* via a standardized mono audio signal...  
+> Some *truly wild things* are possible now that you can pipe together *anything* on your Mac...  
 > **🎷 Share your craziest combos!**
 
 ---
