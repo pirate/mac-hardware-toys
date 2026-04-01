@@ -19,8 +19,8 @@ This is a suite of composable CLI tools for getting, setting, and streaming/tran
 
 Most commands have basic args like `--set ...`, `--json`, `--raw`, making it easy to do useful things with your mac hardware.
 
->  - 💡 Flash your ⌨️ keyboard lights when a background processes completes
--  - ☀️ Pulse your screen brightness and play a tone in sync with detected ambient 🎵 music bpm / ❤️ your heartbeat via accelerometer
+>  - 💡 Flash your ⌨️ keyboard lights + play a sound when a background processes completes
+>  - ☀️ Pulse your screen brightness in sync with detected ambient 🎵 music bpm / ❤️ your detected heartbeat via accelerometer
 >  - 🔬 Get/Set/Stream accelerometer+gyroscope+microphone/etc. data as simple `--raw` scalar values or `--json`, or...
   
 All commands can also pipe in/out a a simple 🎼 ***mono audio*** format.
