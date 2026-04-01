@@ -1,16 +1,60 @@
-# Use your Mac hardware like a modular synth!
+# 🎛️ CLI to Get/Set/Stream Mac Hardware Outputs & Sensors Inputs
 
-A suite of commands like `accelerometer`, `microphone`, `bandpass`, `keyboard-brightness`, `screen-brightness`, and more that can be linked together using UNIX pipes.
+> `pip install mac-hardware-toys`
 
-All tools input and output a standardized mono audio signal that represents their sensor input/output values.
+---
+
+This is a suite of composable CLI tools for getting, setting, and streaming/transforming raw Mac hardware sensor values.
+
+- **sensors:**  
+  `accelerometer`, `microphone`, `lid-angle`, `ambient-light`, `gyroscope`
+
+- **transformers:**  
+  `volume-shift`, `frequency-shift`, `bandpass`, `metronome`, `heartbeat`
+
+- **outputs:**  
+  `speaker`, `keyboard-brightness`, `screen-brightness`, `visualizer`, `fan-speed`
+
+---
+
+Most commands have basic args like `--set ...`, `--json`, `--raw`, making it easy to do useful things with your mac hardware.
+
+>  - 💡 Flash your ⌨️ keyboard lights when a background processes completes
+-  - ☀️ Pulse your screen brightness and play a tone in sync with detected ambient 🎵 music bpm / ❤️ your heartbeat via accelerometer
+>  - 🔬 Get/Set/Stream accelerometer+gyroscope+microphone/etc. data as simple `--raw` scalar values or `--json`, or...
+  
+All commands can also pipe in/out a a simple 🎼 ***mono audio*** format.
+
+> 🎤 read realtime sensor feeds represented as sine waves  
+> 🎛️ mix/filter/transform those sine waves to shape them  
+> 🔊 emit piped realtime signal to speakers/*any* other hw output  
+
+---
+
+> [!TIP]
+> Some *truly wild things* are possible when you can pipe *anything* to *anything* via a standardized mono audio signal...  
+> **🎷 Share your craziest combos!**
+
+---
+
+![Flashing keyboard gif](https://i.imgur.com/AS6tTre.gif)
+![Flashing display gif](https://i.imgur.com/cRFsoDM.gif)
+
+<img width="1004" height="665" alt="Screenshot 2026-02-20 at 11 19 36 PM" src="https://github.com/user-attachments/assets/c30f02b1-2695-4e5f-9724-e01986ba799d" />
+
+---
 
 ## Quickstart
 
 ```bash
 pip install mac-hardware-toys
+# or
+uvx tool add mac-hardware-toys
+```
 
 ### Examples
 
+```
 # flash your screen according to your microphone input
 microphone | screen-brightness
 
@@ -26,10 +70,7 @@ sine 1000 | visualizer
 gyroscope | tee >(speaker) | visualizer
 ```
 
-![Flashing keyboard gif](https://i.imgur.com/AS6tTre.gif)
-![Flashing display gif](https://i.imgur.com/cRFsoDM.gif)
-
-<img width="1004" height="665" alt="Screenshot 2026-02-20 at 11 19 36 PM" src="https://github.com/user-attachments/assets/c30f02b1-2695-4e5f-9724-e01986ba799d" />
+---
 
 ## Tools
 
