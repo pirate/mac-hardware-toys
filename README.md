@@ -333,6 +333,7 @@ It's fun. Here are some ideas to get started:
 - https://pirate.github.io/soundview/ (https://github.com/pirate/soundview)
 - https://github.com/olvvier/apple-silicon-accelerometer IOReg accelerometer reading code
 - https://github.com/EthanRDoesMC/KBPulse/ keyboard brightness code for M1, M2, M3, etc. macs
+- https://github.com/vlasvlasvlas/spank
 - https://github.com/maxmouchet/LightKit
 - https://github.com/tcr/macbook-brightness
 - http://stackoverflow.com/questions/3239749/programmatically-change-mac-display-brightness
