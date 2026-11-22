@@ -26,6 +26,7 @@ This repo exposes that hardware as small, fast, composable Unix CLIs backed by A
 
   * 📊 [`visualizer`](#visualizer) (live TUI that shows frequency bins, histogram, and more)
   * 🔈 [`speaker`](#speaker)
+  * 📳 [`trackpad-vibration`](#trackpad-vibration) (Force Touch trackpad)
   * ⌨️ [`keyboard-brightness`](#keyboard-brightness) ( only on `M*` Mac laptops)
   * 🔆 [`screen-brightness`](#screen-brightness) ( only on `M*` Mac laptops)
   * 𖣘 [`fan-speed`](#fan-speed) ( only on `M*` Mac laptops)
@@ -174,6 +175,17 @@ gyroscope | tee >(speaker) | visualizer
 - Purpose: play incoming stream on default output device.
 - Args: `--device-rate`, `--block-size`.
 
+### `trackpad-vibration`
+
+- Purpose: drive the Force Touch trackpad haptic motor from incoming signal strength, or vibrate a fixed number of times.
+- Args: `--pulse`, `--on-time`, `--off-time`, `--frequency`, `--level`, `--gain`, `--send-hz`, `--raw --rate`.
+- Notes:
+  - `--pulse=<N>` ignores stdin and vibrates N times; `--on-time` and `--off-time` are seconds (both default to `0.2`).
+  - With piped input, RMS signal strength controls vibration intensity at `--send-hz` (default `50`, range `10..200`). `--gain` scales the input before clipping to `0..1`; `--level` sets maximum strength (`0..1`, default `1`). Silence produces no vibration.
+  - `--frequency` sets the vibration carrier in Hz (default `200`, range `100..4000`); input pitch is not reproduced. Use `--gain` to amplify quiet sensor signals.
+  - Uses the same private `MultitouchSupport` actuator APIs as [nospeaker](https://github.com/os6/nospeaker). Requires macOS and a Force Touch MacBook trackpad or Magic Trackpad 2 or newer; prefers the built-in trackpad. No extra binary or root access is required by the command.
+  - Bursts end automatically; EOF or Ctrl-C closes the actuator. Private APIs may change with macOS updates.
+
 ### `visualizer`
 
 - Purpose: terminal waveform + level monitor.
@@ -279,6 +291,20 @@ Pulse keyboard 5 times (1.2s on / 5.5s off) at 100%:
 keyboard-brightness --pulse=5 --on-time=1.2 --off-time=5.5 --set=100
 ```
 
+Vibrate the trackpad 15 times (0.2s on / 0.2s off):
+
+```bash
+trackpad-vibration --pulse 15 --on-time=0.2 --off-time=0.2
+```
+
+Drive trackpad vibration from sensors or metronome pulses:
+
+```bash
+microphone | trackpad-vibration --gain 4 --level 0.5
+accelerometer | metronome | trackpad-vibration
+metronome 120 | trackpad-vibration --frequency 250
+```
+
 Set screen brightness to 40% and exit:
 
 ```bash
@@ -323,6 +349,7 @@ accelerometer \
 - `ambient-light`, `lid-angle`, and `gyroscope` do the same for AppleSPU HID access.
 - Set `MSIG_AUTO_SUDO=0` to disable auto-reexec and only print rerun guidance on stderr.
 - `microphone`/`speaker` depend on `sounddevice` + PortAudio runtime.
+- `trackpad-vibration` uses private MultitouchSupport APIs via Python `ctypes`; the upstream API implementation is credited in `lib/NOSPEAKER_LICENSE`.
 - Keyboard/display brightness tools need supported hardware/permissions.
 - `keyboard-brightness` uses the bundled Apple Silicon KBPulse binary at `lib/KBPulse` (arm64).
 - `fan-speed` uses AppleSMC private IOKit APIs on Apple Silicon; writing fan targets typically requires `sudo`.
@@ -363,6 +390,7 @@ It's fun. Here are some ideas to get started:
 
 ## Related Projects
 
+- https://github.com/os6/nospeaker trackpad haptic motor API and waveform definitions
 - https://pirate.github.io/soundview/ (https://github.com/pirate/soundview)
 - https://github.com/olvvier/apple-silicon-accelerometer IOReg accelerometer reading code
 - https://github.com/EthanRDoesMC/KBPulse/ keyboard brightness code for M1, M2, M3, etc. macs

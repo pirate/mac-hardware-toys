@@ -25,6 +25,7 @@ dependencies = [
 "screen-brightness" = "screen_brightness:main"
 "sine" = "sine:main"
 "speaker" = "speaker:main"
+"trackpad-vibration" = "trackpad_vibration:main"
 "visualizer" = "visualizer:main"
 "volume-shift" = "volume_shift:main"
 
@@ -46,12 +47,16 @@ py-modules = [
     "screen_brightness",
     "sine",
     "speaker",
+    "trackpad_vibration",
     "visualizer",
     "volume_shift",
 ]
 
 [tool.setuptools.data-files]
 lib = ["lib/KBPulse", "lib/LICENSE"]
+
+[tool.setuptools.package-data]
+lib = ["NOSPEAKER_LICENSE"]
 
 
 [build-system]
