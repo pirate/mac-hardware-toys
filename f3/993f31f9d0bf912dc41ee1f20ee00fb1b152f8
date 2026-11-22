@@ -1,0 +1,30 @@
+pyproject.toml
+  s_c8b381b7164d20::t_d6ab09ae29f2e0 28,50,58-59
+  s_c8b381b7164d20::t_365ecaadb41554 60
+lib/trackpad.py
+  s_c8b381b7164d20::t_d6ab09ae29f2e0 1-144
+tests/test_trackpad_vibration.py
+  s_c8b381b7164d20::t_f74960c09e1656 1-200
+trackpad_vibration.py
+  s_c8b381b7164d20::t_d6ab09ae29f2e0 1-139
+README.md
+  s_c8b381b7164d20::t_e0020e350bc8f9 29,178-188,294-307,352,393
+lib/NOSPEAKER_LICENSE
+  s_c8b381b7164d20::t_e69f2141503d99 1-21
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "f3993f31f9d0bf912dc41ee1f20ee00fb1b152f8",
+  "prompts": {},
+  "sessions": {
+    "s_c8b381b7164d20": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "01a2054b-a274-7ad0-84e3-cccf0e29827c",
+        "model": "gpt-6-astra"
+      },
+      "human_author": "Nick Sweeting <git@sweeting.me>"
+    }
+  }
+}
